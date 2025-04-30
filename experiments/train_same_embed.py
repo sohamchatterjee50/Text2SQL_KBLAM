@@ -981,12 +981,12 @@ def main():
     # )
     # tokenizer.pad_token = tokenizer.eos_token
 
-    tokenizer = AutoTokenizer.from_pretrained("/home/schatterjee1/KBLAM/sql-coder-special-Tokens")
+    tokenizer = AutoTokenizer.from_pretrained("C:\Users\SCEE\Desktop\Code_CleanUp\KBLaM\sql-coder-special-Tokens")
     tokenizer.pad_token = tokenizer.eos_token
     
     # num_added_toks = tokenizer.add_tokens(['<|begin_db_id|>','<|end_db_id|>','<|begin_table_id|>','<|end_table_id|>','<|begin_col_id|>','<|end_col_id|>','<|begin_select|>','<|end_select|>','<|begin_from|>','<|end_from|>'], special_tokens=True) 
     # print("No of special tokens added:",num_added_toks)
-    print("Test check for special tokens:",tokenizer.convert_ids_to_tokens(tokenizer( '<|user|>[QUESTION]Start of Question[/QUESTION][SQL]<|end|><|assistant|>Start of SQL<|end|>', return_tensors="pt").to('cpu')['input_ids'].squeeze(0).tolist()))
+    #print("Test check for special tokens:",tokenizer.convert_ids_to_tokens(tokenizer( '<|user|>[QUESTION]Start of Question[/QUESTION][SQL]<|end|><|assistant|>Start of SQL<|end|>', return_tensors="pt").to('cpu')['input_ids'].squeeze(0).tolist()))
     if args.llm_type == "llama3":
         model = KblamLlamaForCausalLM.from_pretrained(
             llm_model_spec,

@@ -946,7 +946,7 @@ def main():
     # )
     # tokenizer.pad_token = tokenizer.eos_token
 
-    tokenizer = AutoTokenizer.from_pretrained("/home/schatterjee1/KBLAM/sql-coder-special-Tokens")
+    tokenizer = AutoTokenizer.from_pretrained("C:\Users\SCEE\Desktop\Code_CleanUp\KBLaM\sql-coder-special-Tokens")
     tokenizer.pad_token = tokenizer.eos_token
     
     # num_added_toks = tokenizer.add_tokens(['<|begin_db_id|>','<|end_db_id|>','<|begin_table_id|>','<|end_table_id|>','<|begin_col_id|>','<|end_col_id|>','<|begin_select|>','<|end_select|>','<|begin_from|>','<|end_from|>'], special_tokens=True) 

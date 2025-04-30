@@ -53,8 +53,8 @@ def compute_embeddings(
     model = SentenceTransformer(encoder_model_spec, device="cuda")
     for chunk in tqdm(chunks):
         embd = model.encode(chunk, convert_to_numpy=True)
-        print(embd.shape)
-        break
+        # print(embd.shape)
+        # break
         embeddings.append(embd)
 
     embeddings = np.concatenate(embeddings, 0)

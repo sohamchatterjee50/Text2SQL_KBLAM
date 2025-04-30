@@ -56,7 +56,7 @@ The embeddings we current support are [text-embedding-ada-002](https://openai.co
 To train the model, run the following (with the appropriate arguments):
 
 ```
-python train.py --dataset synthetic_data --N 120000 --B 20 --total_steps 601  --encoder_spec OAI --use_oai_embd --key_embd_src key --use_data_aug
+python train.py --use_cached_embd  --train_dataset="train_dev_bird_DB_Schemas_100"
 ```
 
 ## Contributing

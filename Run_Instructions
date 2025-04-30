@@ -1,0 +1,13 @@
+Steps to run the code after installing all the necessary libraries:
+
+1. Generate Key and value embeddings by running /dataset_generation/generate_kb_embeddings.py file
+2. Train/Finetune the LLM and adapters by running /master/experiments/train.py  (Use --use_cached_embd to use the embedddings generated in the first step)
+3. Evaluate the checkpoint by running the eval script against the finetuned checkpoint:
+python /home/schatterjee1/KBLAM/KBLaM/experiments/eval_same_embed.py   generation \
+ --encoder_dir="/scratch-shared/chatty/sql-coder-SameEmbedSpace/stage1_lr_0.0001KBTokenLayerFreq3KeyFromkey_all-MiniLM-L6-v2_train_dev_bird_DB_Schemas_100_llama3_step_880/encoder.pt" \
+  --dataset_dir="/home/schatterjee1/KBLAM/KBLaM/datasets"  --test_dataset="random_dev_bird_DB_Schemas_90.json" --llm_base_dir="defog/sqlcoder-7b-2" \
+ --model_dir="/scratch-shared/chatty/sql-coder-SameEmbedSpace/stage1_lr_0.0001KBTokenLayerFreq3KeyFromkey_all-MiniLM-L6-v2_train_dev_bird_DB_Schemas_100_llama3_step_880" \
+ --save_dir="/home/schatterjee1/KBLAM/KBLaM/SQL_Coder-7b_KVs_Eval_Same_Embed_Space" --seed=1  
+ --precomputed_embed_keys_path="/home/schatterjee1/KBLAM/KBLaM/datasets/random_dev_bird_DB_Schemas_90_all-MiniLM-L6-v2_embd_key.npy"  \
+ --precomputed_embed_values_path="/home/schatterjee1/KBLAM/KBLaM/datasets/random_dev_bird_DB_Schemas_90_all-MiniLM-L6-v2_embd_value.npy" --topk_size=-1
+4. Generate metrics(EM/EX) by running /generate_metrics.py 
